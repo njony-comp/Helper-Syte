@@ -15,11 +15,15 @@
     <div class="navbar-header">
       <%= link_to "Help for U", root_path, class: "navbar-brand" %>
     </div>
+    <% if model_signed_in? %>
     <ul class="nav navbar-nav">
       <%= link_to "Vacansions", vac_path, class: "navbar-brand" %>
-      <li><a href="#">Page 2</a></li>
-    </ul>
-    <form class="navbar-form navbar-left" action="/action_page.php">
+      <%= link_to "Profile", prof_path, class: "navbar-brand" %>
+      <%= link_to "Logout",  destroy_model_session_path, method: :delete, class: "navbar-brand" %>
+      <% else %>
+      <%= link_to "Login", new_model_session_path  , class: "navbar-brand" %>
+<% end %>
+      <form class="navbar-form navbar-left" action="/action_page.php">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search" name="search">
         <div class="input-group-btn">
